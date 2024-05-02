@@ -37,7 +37,6 @@ export const fetchPrices = async (): Promise<void> => {
 
 		const updatedPrices = await response.data;
 		const historyDb = await readDB(inMemoryDbPath);
-
 		historyDb.push(updatedPrices);
 
 		await writeDB(inMemoryDbPath, historyDb);

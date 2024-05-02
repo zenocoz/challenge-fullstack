@@ -20,4 +20,5 @@ export interface SingleCryptoInfo {
 	latestPrice: number;
 	average: number;
 	historicalValues: SingleValue[];
+	count?: number | null;
 }

@@ -17,12 +17,9 @@ const express_1 = __importDefault(require("express"));
 const db_1 = require("../db");
 const utilities_1 = require("./utilities");
 const express_validator_1 = require("express-validator");
-// const { check, validationResult, matchedData } = require("express-validator");
-// const multer = require("multer");
-// const { pipeline } = require("stream");
-//Middleware Instances
+//router
 const router = express_1.default.Router();
-// const upload = multer({});
+//check errors
 const isValidCryptoSymbol = (value) => {
     return ["bitcoin", "ethereum", "doge"].includes(value);
 };
@@ -41,6 +38,7 @@ const filterPrices = (symbol, pricesArray, minutes) => {
         latestPrice,
         average,
         historicalValues,
+        count: length < minutes ? length : null,
     };
     return result;
 };
@@ -66,27 +64,4 @@ router.get("/:symbol", [
         next(error);
     }
 }));
-// router.get("/:id", async (req, res, next) => {
-// 	try {
-// 		const mediaDB = await readDB(mediaFilesPath);
-// 		const mediumIndex = mediaDB.findIndex(
-// 			(medium) => medium.imdbID === req.params.id
-// 		);
-// 		if (mediumIndex !== -1) {
-// 			const response = await axios({
-// 				method: "get",
-// 				url: `http://www.omdbapi.com/?i=${req.params.id}&apikey=${process.env.OMDB_API_KEY}`,
-// 			});
-// 			const info = response.data;
-// 			console.log(info);
-// 			res.send(info);
-// 		} else {
-// 			const err = new Error("index not found");
-// 			err.httpStatusCode = 404;
-// 			next(err);
-// 		}
-// 	} catch (error) {
-// 		console.log(error);
-// 	}
-// });
 module.exports = router;

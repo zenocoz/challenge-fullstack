@@ -37,6 +37,7 @@ const filterPrices = (
 		latestPrice,
 		average,
 		historicalValues,
+		count: length < minutes ? length : null,
 	};
 
 	return result;
