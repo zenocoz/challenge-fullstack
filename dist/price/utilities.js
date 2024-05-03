@@ -57,3 +57,4 @@ const fetchPrices = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.fetchPrices = fetchPrices;
+//# sourceMappingURL=utilities.js.map
