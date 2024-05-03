@@ -21,7 +21,7 @@ const express_validator_1 = require("express-validator");
 const router = express_1.default.Router();
 //check errors
 const isValidCryptoSymbol = (value) => {
-    return ["bitcoin", "ethereum", "doge"].includes(value);
+    return ["bitcoin", "ethereum", "dogecoin"].includes(value);
 };
 //filter prices
 const filterPrices = (symbol, pricesArray, minutes) => {
@@ -45,7 +45,7 @@ const filterPrices = (symbol, pricesArray, minutes) => {
 router.get("/:symbol", [
     (0, express_validator_1.param)("symbol")
         .custom((value) => isValidCryptoSymbol(value))
-        .withMessage('Invalid crypto symbol. Must be "bitcoin", "ethereum", or "doge"'),
+        .withMessage('Invalid crypto symbol. Must be "bitcoin", "ethereum", or "dogecoin'),
 ], (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     // Check for validation errors
     const errors = (0, express_validator_1.validationResult)(req);
