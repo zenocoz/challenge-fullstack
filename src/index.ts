@@ -19,3 +19,5 @@ setInterval(fetchPrices, 60000); // 60000 milliseconds = 60 seconds
 app.listen(port, () => {
 	console.log(`Server is running at port:${port}`);
 });
+
+module.exports = app;
