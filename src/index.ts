@@ -1,6 +1,7 @@
 import express, { Express, Request, Response, Application } from "express";
 import dotenv from "dotenv";
 import { fetchPrices } from "./price/utilities";
+const bodyParser = require("body-parser");
 
 //For env File
 dotenv.config();
@@ -8,7 +9,10 @@ dotenv.config();
 const app: Application = express();
 const port = process.env.PORT;
 
-app.use(express.json()); //???
+// app.use(express.json());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routes
 const priceRoutes = require("./price");

@@ -6,11 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const utilities_1 = require("./price/utilities");
+const bodyParser = require("body-parser");
 //For env File
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
-app.use(express_1.default.json()); //???
+// app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 //Routes
 const priceRoutes = require("./price");
 app.use("/price", priceRoutes);
