@@ -1,23 +1,19 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const dotenv_1 = __importDefault(require("dotenv"));
-const utilities_1 = require("./price/utilities");
-const bodyParser = require("body-parser");
+import express from "express";
+import dotenv from "dotenv";
+import { fetchPrices } from "./price/utilities";
+import bodyParser from "body-parser";
 //For env File
-dotenv_1.default.config();
-const app = (0, express_1.default)();
+dotenv.config();
+const app = express();
 const port = process.env.PORT;
 // app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //Routes
-const priceRoutes = require("./price");
+import priceRoutes from "./price";
+// const priceRoutes = require("./price");
 app.use("/price", priceRoutes);
-setInterval(utilities_1.fetchPrices, 60000); // 60000 milliseconds = 60 seconds
+setInterval(fetchPrices, 60000); // 60000 milliseconds = 60 seconds
 app.listen(port, () => {
     console.log(`Server is running at port:${port}`);
 });

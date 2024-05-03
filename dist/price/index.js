@@ -1,24 +1,10 @@
-"use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
 //Tools and Middleware
-const express_1 = __importDefault(require("express"));
-const db_1 = require("../db");
-const utilities_1 = require("./utilities");
-const express_validator_1 = require("express-validator");
+import express from "express";
+import { inMemoryDbPath } from "../db";
+import { readDB } from "./utilities";
+import { param, validationResult } from "express-validator";
 //router
-const router = express_1.default.Router();
+const router = express.Router();
 //check errors
 const isValidCryptoSymbol = (value) => {
     return ["bitcoin", "ethereum", "dogecoin"].includes(value);
@@ -43,19 +29,19 @@ const filterPrices = (symbol, pricesArray, minutes) => {
     return result;
 };
 router.get("/:symbol", [
-    (0, express_validator_1.param)("symbol")
+    param("symbol")
         .custom((value) => isValidCryptoSymbol(value))
         .withMessage('Invalid crypto symbol. Must be "bitcoin", "ethereum", or "dogecoin'),
-], (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+], async (req, res, next) => {
     // Check for validation errors
-    const errors = (0, express_validator_1.validationResult)(req);
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
     const symbol = req.params.symbol.toLowerCase();
     const minutes = parseInt(req.query.minutes) || 60; //default 60 minutes
     try {
-        const prices = yield (0, utilities_1.readDB)(db_1.inMemoryDbPath);
+        const prices = await readDB(inMemoryDbPath);
         const cryptoInfo = filterPrices(symbol, prices, minutes);
         res.status(200).send(cryptoInfo);
     }
@@ -63,6 +49,6 @@ router.get("/:symbol", [
         console.log(error);
         next(error);
     }
-}));
-module.exports = router;
+});
+export default router;
 //# sourceMappingURL=index.js.map

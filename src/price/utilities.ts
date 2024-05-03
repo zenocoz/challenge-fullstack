@@ -1,7 +1,9 @@
 import { CryptoPrices } from "../interfaces";
 import axios from "axios";
-const { readJson, writeJson } = require("fs-extra");
+import fsExtra from "fs-extra";
 import { inMemoryDbPath } from "../db";
+
+const { writeJson, readJson } = fsExtra;
 
 export const readDB = async (filePath: string) => {
 	try {

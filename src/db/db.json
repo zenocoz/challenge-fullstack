@@ -1,1 +1,32 @@
-[]
+[
+	{
+		"bitcoin": { "eur": 54856 },
+		"dogecoin": { "eur": 0.122459 },
+		"ethereum": { "eur": 2760.21 }
+	},
+	{
+		"bitcoin": { "eur": 54856 },
+		"dogecoin": { "eur": 0.122459 },
+		"ethereum": { "eur": 2760.21 }
+	},
+	{
+		"bitcoin": { "eur": 54856 },
+		"dogecoin": { "eur": 0.122459 },
+		"ethereum": { "eur": 2760.21 }
+	},
+	{
+		"bitcoin": { "eur": 54856 },
+		"dogecoin": { "eur": 0.122459 },
+		"ethereum": { "eur": 2760.21 }
+	},
+	{
+		"bitcoin": { "eur": 54856 },
+		"dogecoin": { "eur": 0.122459 },
+		"ethereum": { "eur": 2760.21 }
+	},
+	{
+		"bitcoin": { "eur": 54887 },
+		"dogecoin": { "eur": 0.12257 },
+		"ethereum": { "eur": 2761.76 }
+	}
+]

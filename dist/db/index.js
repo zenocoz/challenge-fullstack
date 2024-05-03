@@ -1,6 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.inMemoryDbPath = void 0;
-const path_1 = require("path");
-exports.inMemoryDbPath = (0, path_1.join)(__dirname, "db.json");
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+export const inMemoryDbPath = path.join(__dirname, "db.json");
 //# sourceMappingURL=index.js.map
