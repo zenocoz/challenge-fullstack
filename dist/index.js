@@ -2,11 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 import { fetchPrices } from "./src/price/utilities";
 import bodyParser from "body-parser";
+import cors from "cors";
 //For env File
 dotenv.config();
 const app = express();
 const port = process.env.PORT;
 // app.use(express.json());
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //Routes
