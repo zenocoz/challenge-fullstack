@@ -8,8 +8,8 @@
 		"build": "rimraf dist && tsc",
 		"ts.check": "tsc --project tsconfig.json",
 		"add-build": "git add dist",
-		"start": "tsx src/index.ts",
-		"dev": "tsx src/index.ts"
+		"start": "tsx index.ts",
+		"dev": "tsx index.ts"
 	},
 	"pre-commit": [
 		"ts.check",

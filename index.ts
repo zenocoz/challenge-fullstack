@@ -1,6 +1,6 @@
 import express, { Express, Request, Response, Application } from "express";
 import dotenv from "dotenv";
-import { fetchPrices } from "./price/utilities";
+import { fetchPrices } from "./src/price/utilities";
 import bodyParser from "body-parser";
 
 //For env File
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routes
 
-import priceRoutes from "./price";
+import priceRoutes from "./src/price";
 
 // const priceRoutes = require("./price");
 app.use("/price", priceRoutes);
