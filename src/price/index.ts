@@ -10,7 +10,7 @@ const router = express.Router();
 
 //check errors
 const isValidCryptoSymbol = (value: string) => {
-	return ["bitcoin", "ethereum", "doge"].includes(value);
+	return ["bitcoin", "ethereum", "dogecoin"].includes(value);
 };
 
 //filter prices
@@ -49,7 +49,7 @@ router.get(
 		param("symbol")
 			.custom((value) => isValidCryptoSymbol(value))
 			.withMessage(
-				'Invalid crypto symbol. Must be "bitcoin", "ethereum", or "doge"'
+				'Invalid crypto symbol. Must be "bitcoin", "ethereum", or "dogecoin'
 			),
 	],
 	async (req: Request, res: Response, next: NextFunction) => {

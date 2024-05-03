@@ -14,8 +14,7 @@ app.use(express.json()); //???
 const priceRoutes = require("./src/price");
 app.use("/price", priceRoutes);
 
-// Set up an interval to call the fetchData function every 60 seconds
-setInterval(fetchPrices, 10000); // 60000 milliseconds = 60 seconds
+setInterval(fetchPrices, 60000); // 60000 milliseconds = 60 seconds
 
 app.listen(port, () => {
 	console.log(`Server is running at http://localhost:${port}`);
